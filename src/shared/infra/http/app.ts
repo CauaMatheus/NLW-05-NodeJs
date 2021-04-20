@@ -1,16 +1,26 @@
-import express from 'express';
+import { AppError } from '@errors/AppError';
+import express, { NextFunction, Request, Response } from 'express';
+
+import 'express-async-errors';
 import 'reflect-metadata';
+import createConnection from '../typeorm';
+import { router } from './routes';
+
+import '@shared/container';
+
+createConnection();
 
 const app = express();
 
 app.use(express.json());
 
-app.get('/', (request, response) => response.json({
-  message: 'Hello World!',
-}));
+app.use(router);
 
-app.post('/', (request, response) => response.json({
-  message: 'Message Created :D',
-}));
+app.use((err: Error, request: Request, response: Response, nextFunction: NextFunction) => {
+  if (err instanceof AppError) {
+    return response.status(err.status).json({ message: err.message });
+  }
+  return response.status(500).json({ message: err.message });
+});
 
 export { app };
