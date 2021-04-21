@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { CreateSettingController } from 'modules/settings/useCases/CreateSettingController';
+import { CreateSettingController } from 'modules/settings/useCases/createSetting/CreateSettingController';
 
 const settingsRoutes = Router();
 

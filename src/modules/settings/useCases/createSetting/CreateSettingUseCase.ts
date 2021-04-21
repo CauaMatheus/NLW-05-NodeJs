@@ -1,8 +1,8 @@
 import { AppError } from '@errors/AppError';
 import { inject, injectable } from 'tsyringe';
 
-import { Setting } from '../infra/typeorm/entities/Setting';
-import { ISettingsRepository } from '../repositories/ISettingsRepository';
+import { Setting } from '../../infra/typeorm/entities/Setting';
+import { ISettingsRepository } from '../../repositories/ISettingsRepository';
 
 interface IRequest {
   username: string
