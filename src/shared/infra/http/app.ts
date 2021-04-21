@@ -16,7 +16,7 @@ app.use(express.json());
 
 app.use(router);
 
-app.use((err: Error, request: Request, response: Response, nextFunction: NextFunction) => {
+app.use((err: Error, request: Request, response: Response, nextFunction: NextFunction) => { // eslint-disable-line
   if (err instanceof AppError) {
     return response.status(err.status).json({ message: err.message });
   }
