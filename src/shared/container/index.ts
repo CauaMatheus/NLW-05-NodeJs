@@ -1,4 +1,6 @@
+import { ConnectionsRepository } from 'modules/chats/infra/typeorm/repositories/ConnectionsRepository';
 import { MessagesRepository } from 'modules/chats/infra/typeorm/repositories/MessagesRepository';
+import { IConnectionsRepository } from 'modules/chats/repositories/IConnectionsRepository';
 import { IMessagesRepository } from 'modules/chats/repositories/IMessagesRepository';
 import { SettingsRepository } from 'modules/settings/infra/typeorm/repositories/SettingsRepository';
 import { ISettingsRepository } from 'modules/settings/repositories/ISettingsRepository';
@@ -16,4 +18,8 @@ container.registerSingleton<IUsersRepository>(
 
 container.registerSingleton<IMessagesRepository>(
   'MessagesRepository', MessagesRepository,
+);
+
+container.registerSingleton<IConnectionsRepository>(
+  'ConnectionsRepository', ConnectionsRepository,
 );
